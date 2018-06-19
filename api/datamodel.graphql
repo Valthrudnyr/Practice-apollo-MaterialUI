@@ -1,0 +1,11 @@
+type Character {
+  id: ID! @unique
+  name: String!
+  level: Int
+  email: String @unique
+  password: String
+  about: String
+  dob: DateTime
+  phone: String
+  nickname: String
+}

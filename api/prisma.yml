@@ -1,0 +1,3 @@
+#endpoint: https://us1.prisma.sh/nathanael-sherwood/NathanaelS/NSS
+datamodel: datamodel.graphql
+endpoint: https://us1.prisma.sh/nathanael-sherwood/CharacterWalle/dev
