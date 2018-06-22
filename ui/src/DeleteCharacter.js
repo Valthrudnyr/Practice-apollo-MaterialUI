@@ -19,7 +19,7 @@ function Transition(props) {
 
 class AlertDialogSlide extends Component {
     state = {
-        open: fagitlse,
+        open: false,
     };
 
 
