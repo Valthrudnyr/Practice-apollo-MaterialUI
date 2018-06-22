@@ -1,58 +1,17 @@
 import React, { Component } from 'react'
 import { Mutation } from "react-apollo";
 import gql from "graphql-tag";
+import Paper from '@material-ui/core/Paper';
 
-// export default class extends Component {
-//     state = {
-//         name: "",
-//         level: 1,
-//         nickname: ""
-//     }
-//     createCharacterMutation = gql`
-//         mutation createCharacter($name: String!, $level: Int!, $nickname: String!) {
-//             createCharacter(data: {name: $name, level: $level, nickname: $nickname }) {
-//                 id
-//                 name
-//                 level
-//                 nickname
-//             }
-//         }
-//     `;
-//
-//     render () {
-//         return (
-//             <Mutation mutation={this.createCharacterMutation}>
-//                 {(createChar, {data}) => (
-//                     <div>
-//                         <form onSubmit={event => {
-//                             event.preventDefault()
-//                             createChar({variables: {
-//                                     name: this.state.name,
-//                                     level: this.state.level,
-//                                     nickname: this.state.nickname
-//                                 }})
-//                             window.location.reload(true)
-//                         }}>
-//                             <input type="text" placeholder="Name" onChange={event => this.setState({ name : event.target.value})}/>
-//                             <input type="number" placeholder="Level" min="1" max="50" onChange={event => this.setState({ level : parseInt(event.target.value)})}/>
-//                             <input type="text" placeholder="Nickname" onChange={event => this.setState({ nickname : event.target.value})}/>
-//                             <input type="submit" />
-//                         </form>
-//                     </div>
-//                 )}
-//             </Mutation>
-//         )
-//     }
-// }
+// 1. Possibly create an avatar
 
+const style = {
+    paddingTop: '16',
+    paddingBottom: '16',
+    height: '20px',
+    width: '495px'
+}
 
-
-
-// import React, { Component } from 'react';
-// import gql from "graphql-tag";
-// import { Mutation } from "react-apollo";
-//
-//
 export default class extends Component {
     state = {
         name: "",
@@ -77,6 +36,7 @@ export default class extends Component {
             <Mutation mutation={this.createCharacterMutation}>
                 {(createChar, {data}) => (
                     <div>
+                        <Paper style={style} elevation="12">
                         <form onSubmit={event => {
                             event.preventDefault()
                             createChar({variables: {
@@ -93,6 +53,7 @@ export default class extends Component {
                             <input type="text" placeholder="Nickname" required onChange={event => this.setState({ nickname : event.target.value})}/>
                             <input type="submit" />
                         </form>
+                        </Paper>
                     </div>
                 )}
             </Mutation>

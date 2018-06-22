@@ -1,8 +1,9 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { Mutation } from "react-apollo";
 import gql from "graphql-tag";
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import Paper from '@material-ui/core/Paper';
 
 
 // 1. Pass in Character as Props
@@ -11,14 +12,15 @@ import TextField from '@material-ui/core/TextField';
 // 4. Setup Graphql updateCharacter Mutation
 // 5. Connect Mutation Form with Mutation Statement
 
-
-
-// import React, { Component, Fragment } from 'react'
-// import { Mutation } from "react-apollo";
-// import gql from "graphql-tag";
-
 const style = {
     background: 'blue'
+}
+
+const rise = {
+    paddingTop: '16',
+    paddingBottom: '16',
+    height: '145px',
+    width: '300px'
 }
 
 export default class extends Component {
@@ -44,19 +46,23 @@ export default class extends Component {
     `
 
     updateComp = () => {
-        return (
-            <Fragment>
-                <TextField type="text" value={this.state.name} onChange={event => this.setState({name : event.target.value})}/>
-                <br/>
-                <input type="number" value={this.state.level} onChange={event => this.setState({level : parseInt(event.target.value)})}/>
-                <br/>
-                <TextField type="text" value={this.state.about} onChange={event => this.setState({about : event.target.value})}/>
-                <br/>
-                <TextField type="text" value={this.state.nickname} onChange={event => this.setState({nickname : event.target.value})}/>
-                <br/>
-            </Fragment>
-        )
-    }
+            return (
+                <Paper style={rise} elevation="12">
+                    <TextField type="text" value={this.state.name}
+                               onChange={event => this.setState({name: event.target.value})}/>
+                    <br/>
+                    <input type="number" value={this.state.level}
+                           onChange={event => this.setState({level: parseInt(event.target.value)})}/>
+                    <br/>
+                    <TextField type="text" value={this.state.about}
+                               onChange={event => this.setState({about: event.target.value})}/>
+                    <br/>
+                    <TextField type="text" value={this.state.nickname}
+                               onChange={event => this.setState({nickname: event.target.value})}/>
+                    <br/>
+                </Paper>
+            )
+        }
 
     render () {
         const update= this.updateComp()
@@ -79,11 +85,12 @@ export default class extends Component {
                             window.location.reload(true)
                         } else {
                             this.setState({buttonText: "Submit"})
+                            // <Button style={style} type="submit" size="medium" variant="contained">{this.state.buttonText}</Button>
                         }
                         this.setState({isUpdating: !this.state.isUpdating })
                     }}>
                         {this.state.isUpdating ? update : null}
-                        <Button style={style} type="submit" size="small" variant="contained">{this.state.buttonText}</Button>
+                        <Button style={style} type="submit" size="medium" variant="contained">{this.state.buttonText}</Button>
                     </form>
                 )}
             </Mutation>
